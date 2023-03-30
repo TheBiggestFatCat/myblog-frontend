@@ -1,0 +1,120 @@
+<template>
+  <div class="home">
+    <Navigation></Navigation>
+    <div class="home-top">
+      <div class="avatar">
+        <img :src="avatar" alt="Image">
+      </div>
+      <div class="avatar-right">
+        <h2>{{ name }}</h2>
+        <div class="border"></div>
+        <p v-for="i in introduction" :key="i">{{ i }}</p>
+        <a href="https://github.com/" target="_blank">
+          <button><img src="@/assets/icons/github.svg" style="color: #fff" alt=""> 前往Github</button>
+        </a>
+      </div>
+    </div>
+    <div class="home-body">
+      <div class="personal">
+        <h3></h3>
+        <div class="border"></div>
+        <!-- <p>{{ personalText }}</p> -->
+      </div>
+    </div>
+  </div>
+</template>
+
+<script lang='ts' setup>
+import Navigation from './Navigation.vue';
+import { ref } from 'vue'
+
+// 头像
+const avatar = ref('src/assets/pics/avatar.jpg')
+
+// 姓名
+const name = '张齐煜'
+
+// 顶部介绍
+const introduction = [
+  '一只来自外星的猫猫虫。',
+  '就读与上海商学院，大三。',
+  '擅长技术栈vue2/vue3, node.js, 微信小程序'
+]
+
+</script>
+ 
+<style lang="less" scoped>
+.home-top {
+  width: 100vw;
+  height: 400px;
+  align-items: center;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+
+  .avatar {
+    width: 300px;
+    height: 200px;
+    padding-right: 60px;
+
+    img {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+    }
+  }
+
+  .avatar-right {
+    width: 400px;
+    height: 160px;
+
+    h2 {
+      font-size: 32px;
+    }
+
+    .border {
+      margin: 20px 0 20px 0;
+      width: 100%;
+      border-top: 1px solid #000;
+    }
+
+    button {
+      background-color: #24292e;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #6e7681;
+    }
+  }
+}
+
+.home-top::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 400px;
+  // width: 100%;
+  // height: 100%;
+  background-image: url(@/assets/pics/home3.jpg);
+  background-position: 0 -400px;
+  background-size: cover;
+  filter: blur(2px);
+  /* 设置模糊半径 */
+  opacity: 0.85;
+  /* 设置不透明度 */
+  z-index: -1;
+  /* 将遮罩层放在最底层 */
+}
+
+.home-body {
+  height: 1000px;
+  background-color: #d8d8d8;
+}</style>
